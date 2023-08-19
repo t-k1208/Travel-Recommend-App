@@ -1,0 +1,99 @@
+<!--
+The value in the url is {{pk}}
+<p>検索ワード: {{spot}}<p>
+<h4>類似spot</h4>
+{% for title in title_similar %}
+  <p>{{title}}<p>
+{% endfor %}
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    /*font-family: Arial;*/
+    /*padding: 20px;*/
+    background: #f1f1f1;
+  }
+
+  .header {
+    /*padding: 2px;*/
+    font-size: 40px;
+    text-align: center;
+    background: white;
+  }
+
+  .leftcolumn {   
+    float: left;
+    width: 100%;
+  }
+
+  .title {
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+/*
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
+*/
+  </style>
+</head>
+<body>
+  <nav class="row" style="background: grey; color: white;">
+    <a style="text-decoration: none; color: white;" href="/">
+      <div align="center"><h1 class="col-md-3 text-center">Travel Recommend</h1></div>
+    </a>
+  </nav>
+
+  <!--
+  <div class="header">
+    <h4>recommend</h4>
+  </div>
+  -->
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="title">
+        <h3>{{spot}}</h3>
+      </div>
+      {% for title in title_similar %}
+      <a style="text-decoration: none; color: black;" href="{% url 'to_recommend' title %}">
+        <div class="card">
+          <p>{{title}}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
